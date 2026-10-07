@@ -1,0 +1,67 @@
+﻿@model List<University.MVC.Models.StudentViewModel>
+
+@{
+    ViewData["Title"] = "Students";
+}
+
+<h1>Students</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">
+        Create Student
+    </a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Department</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.StudentID</td>
+                <td>@student.FirstName</td>
+                <td>@student.LastName</td>
+                <td>@student.Email</td>
+                <td>@student.Age</td>
+                <td>@student.Gender</td>
+                <td>@student.DepartmentID</td>
+
+                <td>
+                    <a asp-controller="Student"
+                       asp-action="Details"
+                       asp-route-id="@student.StudentID">
+                        Details
+                    </a>
+
+                    |
+
+                    <a asp-controller="Student"
+                       asp-action="Edit"
+                       asp-route-id="@student.StudentID">
+                        Edit
+                    </a>
+
+                    |
+
+                    <a asp-controller="Student"
+                       asp-action="Delete"
+                       asp-route-id="@student.StudentID">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
